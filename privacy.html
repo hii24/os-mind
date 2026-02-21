@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Політика конфіденційності — os-mind</title>
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/png" href="/logo.png" media="(prefers-color-scheme: light)" />
+    <link rel="icon" type="image/png" href="/logo-white.png" media="(prefers-color-scheme: dark)" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600;700&family=Inter:wght@400;500;600;700;800;900&display=swap"
+        media="all" />
+
+    <script type="module" src="/src/js/main.js"></script>
+    <style>
+        .legal-content {
+            padding: 120px 20px 80px;
+            max-width: 800px;
+            margin: 0 auto;
+            color: #111;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .legal-content {
+                color: #eee;
+            }
+        }
+
+        .legal-content h1 {
+            font-family: var(--font-mono);
+            font-size: clamp(32px, 5vw, 48px);
+            margin-bottom: 24px;
+            letter-spacing: -0.02em;
+        }
+
+        .legal-content h2 {
+            font-family: var(--font-body);
+            font-size: 24px;
+            margin-top: 48px;
+            margin-bottom: 16px;
+        }
+
+        .legal-content p,
+        .legal-content li {
+            font-family: var(--font-body);
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 16px;
+            color: #475569;
+        }
+
+        @media (prefers-color-scheme: dark) {
+
+            .legal-content p,
+            .legal-content li {
+                color: #aaa;
+            }
+        }
+
+        .legal-content ul {
+            padding-left: 24px;
+            margin-bottom: 24px;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            margin-bottom: 40px;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <section class="legal-content">
+            <a href="/" class="back-link">← Повернутися на головну</a>
+
+            <h1>Політика конфіденційності</h1>
+            <p>Останнє оновлення: 21 Лютого 2026 р.</p>
+
+            <h2>1. Збір інформації</h2>
+            <p>Наразі продукт <strong>os-mind</strong> знаходиться на стадії розробки. Ми збираємо лише ту інформацію,
+                яку ви добровільно надаєте нам під час запису до списку очікування (Waitlist):</p>
+            <ul>
+                <li>Електронна пошта (email).</li>
+            </ul>
+            <p>Ми <strong>не</strong> збираємо жодних чутливих медичних даних, інформації про стан вашого здоров'я або
+                діагнози (наприклад, РДУГ/ADHD).</p>
+
+            <h2>2. Використання інформації</h2>
+            <p>Ваша електронна пошта використовується виключно для:</p>
+            <ul>
+                <li>Сповіщення вас про офіційний запуск продукту.</li>
+                <li>Надання раннього доступу (бета-тестування) до застосунку.</li>
+                <li>Відправки важливих оновлень щодо розробки <strong>os-mind</strong>.</li>
+            </ul>
+
+            <h2>3. Зберігання та захист даних</h2>
+            <p>Ваші дані (email) зберігаються на безпечних серверах Google Firebase. Ми вживаємо розумних комерційних
+                заходів для захисту ваших даних від несанкціонованого доступу. Однак жоден метод передачі через Інтернет
+                не є на 100% безпечним.</p>
+
+            <h2>4. Передача даних третім особам</h2>
+            <p>Ми <strong>ніколи</strong> не продаємо, не здаємо в оренду і не передаємо ваші персональні дані третім
+                особам у маркетингових цілях. Дані можуть бути передані лише на законну вимогу правоохоронних органів
+                згідно з чинним законодавством.</p>
+
+            <h2>5. Ваші права</h2>
+            <p>Ви маєте право у будь-який час зробити запит на видалення вашої електронної пошти з нашої бази
+                очікування. Для цього надішліть запит на нашу контактну адресу.</p>
+
+            <h2>6. Зміни до Політики конфіденційності</h2>
+            <p>Ми можемо час від часу оновлювати цю політику. Будь-які зміни будуть опубліковані на цій сторінці.</p>
+
+            <h2>7. Контакти</h2>
+            <p>Якщо у вас виникли питання щодо цієї політики, зверніться до нас: <strong><a
+                        href="mailto:support@os-mind.com"
+                        style="color: var(--primary);">support@os-mind.com</a></strong></p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer__container">
+            <div class="footer__copy">
+                &copy; <span id="current-year"></span> os-mind. Всі права захищені.
+            </div>
+            <div class="footer__links">
+                <a href="mailto:support@os-mind.com">support@os-mind.com</a>
+                <a href="/privacy.html">Політика конфіденційності</a>
+                <a href="/terms.html">Умови використання</a>
+            </div>
+        </div>
+    </footer>
+    <script>
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+    </script>
+</body>
+
+</html>
