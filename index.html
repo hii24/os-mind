@@ -4,18 +4,47 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ADHD OS — Операційна система для СДУГ мозку</title>
+    <title>ADHD OS — Додаток для СДУГ мозку</title>
     <meta name="description"
-        content="Будуємо операційну систему для людей з СДУГ. Body doubling, дофамінове меню, режим фокусу. Приєднуйся до першої хвилі тестувальників." />
-    <meta property="og:title" content="ADHD OS — Твій мозок, наша система" />
-    <meta property="og:description" content="Операційна система для людей, у яких відкрито 50 вкладок в голові." />
+        content="ADHD OS — додаток для людей з СДУГ (ADHD). Body doubling, дофамінове меню, фокус-режими. Організуй свій мозок без провини за невиконані задачі." />
+    <meta name="keywords" content="СДУГ, ADHD, таск-трекер, планувальник, body doubling, продуктивність, фокус" />
+    <link rel="canonical" href="https://adhdos.com/" />
+
+    <!-- Open Graph / Web / Telegram -->
     <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://adhdos.com/" />
+    <meta property="og:title" content="ADHD OS — Додаток для СДУГ мозку" />
+    <meta property="og:description"
+        content="Будуємо додаток для людей, у яких відкрито 50 вкладок в голові. Без почуття провини." />
+    <meta property="og:image" content="https://adhdos.com/assets/img/decision-paralysis.png" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://adhdos.com/" />
+    <meta name="twitter:title" content="ADHD OS — Додаток для СДУГ мозку" />
+    <meta name="twitter:description"
+        content="Будуємо додаток для людей, у яких відкрито 50 вкладок в голові. Без почуття провини." />
+    <meta name="twitter:image" content="https://adhdos.com/assets/img/decision-paralysis.png" />
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/vite.svg" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/vite.svg" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
+    <!-- Preload for faster font loading -->
+    <link rel="preload"
         href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600;700&family=Inter:wght@400;500;600;700;800;900&display=swap"
-        rel="stylesheet" />
+        as="style" />
+    <!-- Async CSS load -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600;700&family=Inter:wght@400;500;600;700;800;900&display=swap"
+        media="print" onload="this.media='all'" />
+    <noscript>
+        <link rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600;700&family=Inter:wght@400;500;600;700;800;900&display=swap" />
+    </noscript>
 
     <script type="module" src="/src/js/main.js"></script>
 </head>
@@ -31,7 +60,7 @@
             <div class="container">
                 <h1 class="mono-title hero__title">ТВІЙ МОЗОК — ЦЕ ОФІС У ВОГНІ?</h1>
                 <p class="hero__subtitle">
-                    Будуємо операційну систему для людей, у яких відкрито 50 вкладок в голові.
+                    Будуємо додаток для людей, у яких відкрито 50 вкладок в голові.
                 </p>
 
                 <form id="hero-form" class="terminal-cta">
@@ -50,6 +79,8 @@
         <!-- ═══════════════ PROBLEMS ═══════════════ -->
         <section class="problems section">
             <div class="container">
+                <h2 class="sr-only">Проблеми людей з СДУГ</h2>
+
                 <div class="problem">
                     <div class="problem__image">
                         <img src="/assets/img/decision-paralysis.png"
@@ -57,7 +88,7 @@
                             loading="lazy" />
                     </div>
                     <div class="problem__text">
-                        <span class="problem__accent">Параліч рішень.</span>
+                        <h3 class="problem__accent">Параліч рішень.</h3>
                         Ти знаєш, що треба робити, але фізично не можеш почати.
                     </div>
                 </div>
@@ -68,7 +99,7 @@
                             width="600" height="450" loading="lazy" />
                     </div>
                     <div class="problem__text">
-                        <span class="problem__accent">Пам'ять як у золотої рибки.</span>
+                        <h3 class="problem__accent">Пам'ять як у золотої рибки.</h3>
                         Геніальна ідея зникає через 3 секунди. Ти знову забув, навіщо відкрив цю вкладку.
                     </div>
                 </div>
@@ -87,7 +118,7 @@
                         <div class="bento-card">
                             <div class="bento-card__icon">👥</div>
                             <div>
-                                <div class="bento-card__title">Тіло-двійник<br />(Body Doubling)</div>
+                                <h3 class="bento-card__title">Тіло-двійник<br />(Body Doubling)</h3>
                                 <div class="accent-bar"></div>
                                 <div class="bento-card__desc">
                                     Працюй не наодинці. Віртуальна присутність інших допомагає тримати фокус.
@@ -98,7 +129,7 @@
                         <div class="bento-card">
                             <div class="bento-card__icon">🎮</div>
                             <div>
-                                <div class="bento-card__title">Дофамінове<br />меню</div>
+                                <h3 class="bento-card__title">Дофамінове<br />меню</h3>
                                 <div class="accent-bar"></div>
                                 <div class="bento-card__desc">
                                     Гейміфікація нудних задач. Отримуй швидку винагороду за кожну закриту справу.
@@ -109,7 +140,7 @@
                         <div class="bento-card">
                             <div class="bento-card__icon">⚡</div>
                             <div>
-                                <div class="bento-card__title">Режим<br />Фокусу</div>
+                                <h3 class="bento-card__title">Режим<br />Фокусу</h3>
                                 <div class="accent-bar"></div>
                                 <div class="bento-card__desc">
                                     Блокування всього зайвого однією кнопкою. Тільки ти і найважливіша задача.
@@ -132,8 +163,8 @@
                 </blockquote>
 
                 <div class="founder">
-                    <img src="https://storage.googleapis.com/banani-avatars/avatar%2Fmale%2F25-35%2FEuropean%2F3"
-                        alt="Засновник" class="founder__avatar" width="80" height="80" loading="lazy" />
+                    <img src="/assets/img/founder_avatar.jpg" alt="Засновник" class="founder__avatar" width="80"
+                        height="80" loading="lazy" />
                     <div class="founder__caption">Від засновника з СДУГ для своїх</div>
                 </div>
             </div>

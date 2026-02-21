@@ -7,7 +7,10 @@ import { startAnimation } from '../animation/bootstrap.js';
 // ─── Start NPC animation on fixed background canvas ───
 const npcCanvas = document.getElementById('npc-canvas');
 if (npcCanvas) {
-    startAnimation(npcCanvas);
+    // Defer animation startup so the main UI renders instantly
+    setTimeout(() => {
+        startAnimation(npcCanvas);
+    }, 100);
 }
 
 // ─── Email form submission ───

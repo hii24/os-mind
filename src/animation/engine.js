@@ -7,10 +7,13 @@ export function createEngine(canvasEl) {
     const ctx = canvasEl.getContext('2d');
     let W, H;
 
+    let bgCache = null;
+
     // Use devicePixelRatio for sharp rendering on mobile
     function resize() {
         W = canvasEl.width = canvasEl.offsetWidth;
         H = canvasEl.height = canvasEl.offsetHeight;
+        bgCache = null; // invalidate cache
     }
     resize();
     window.addEventListener('resize', resize);
@@ -40,32 +43,43 @@ export function createEngine(canvasEl) {
         return { wx, wy };
     }
 
-    function drawFloor() {
+    function renderBgCache() {
+        bgCache = document.createElement('canvas');
+        bgCache.width = W;
+        bgCache.height = H;
+        const bgCtx = bgCache.getContext('2d');
+
         const cx = W * 0.5, cy = H * 0.5;
         const tileW = getTileW(), tileH = tileW * 0.5;
         // Calculate N so the grid fully covers the viewport (even in portrait)
         const diagH = H / tileH;   // how many tile-heights fit vertically
         const diagW = W / tileW;   // how many tile-widths fit horizontally
         const N = Math.ceil(Math.max(diagH, diagW) / 2) + 2;
+
         for (let gy = -N; gy < N; gy++) {
             for (let gx = -N; gx < N; gx++) {
                 const sx = cx + (gx - gy) * tileW;
                 const sy = cy + (gx + gy) * tileH;
                 // Skip tiles fully outside viewport
                 if (sx < -tileW * 2 || sx > W + tileW * 2 || sy < -tileH * 2 || sy > H + tileH * 2) continue;
-                ctx.beginPath();
-                ctx.moveTo(sx, sy - tileH);
-                ctx.lineTo(sx + tileW, sy);
-                ctx.lineTo(sx, sy + tileH);
-                ctx.lineTo(sx - tileW, sy);
-                ctx.closePath();
-                ctx.fillStyle = (gx + gy) % 2 === 0 ? 'rgba(0,0,0,0.025)' : 'rgba(0,0,0,0.015)';
-                ctx.fill();
-                ctx.strokeStyle = 'rgba(0,0,0,0.055)';
-                ctx.lineWidth = 0.5;
-                ctx.stroke();
+                bgCtx.beginPath();
+                bgCtx.moveTo(sx, sy - tileH);
+                bgCtx.lineTo(sx + tileW, sy);
+                bgCtx.lineTo(sx, sy + tileH);
+                bgCtx.lineTo(sx - tileW, sy);
+                bgCtx.closePath();
+                bgCtx.fillStyle = (gx + gy) % 2 === 0 ? 'rgba(0,0,0,0.025)' : 'rgba(0,0,0,0.015)';
+                bgCtx.fill();
+                bgCtx.strokeStyle = 'rgba(0,0,0,0.055)';
+                bgCtx.lineWidth = 0.5;
+                bgCtx.stroke();
             }
         }
+    }
+
+    function drawFloor() {
+        if (!bgCache) renderBgCache();
+        ctx.drawImage(bgCache, 0, 0);
     }
 
     function getW() { return W; }

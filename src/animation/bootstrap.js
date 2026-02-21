@@ -26,11 +26,15 @@ export function startAnimation(canvasEl) {
     const loaded = {};
 
     function loadAll(cb) {
-        let done = 0;
         const entries = Object.entries(SPRITES);
         const total = entries.length;
+        let loadedCount = 0;
+        let currentIndex = 0;
 
-        for (const [key, data] of entries) {
+        function processNextSprite() {
+            if (currentIndex >= total) return;
+
+            const [key, data] = entries[currentIndex];
             const img = new Image();
             img.onload = () => {
                 const frameCount = Math.round(img.width / img.height);
@@ -38,39 +42,66 @@ export function startAnimation(canvasEl) {
                 const fh = img.height;
                 const frames = [];
 
-                for (let i = 0; i < frameCount; i++) {
-                    const fc = document.createElement('canvas');
-                    fc.width = fw;
-                    fc.height = fh;
-                    const fx = fc.getContext('2d');
-                    fx.drawImage(img, -i * fw, 0);
+                let currentFrameIndex = 0;
 
-                    const id = fx.getImageData(0, 0, fw, fh);
-                    const d = id.data;
-                    for (let p = 0; p < d.length; p += 4) {
-                        const br = (d[p] + d[p + 1] + d[p + 2]) / 3;
-                        if (br < 18) {
-                            d[p + 3] = 0;
-                        } else {
-                            d[p] = 0;
-                            d[p + 1] = 0;
-                            d[p + 2] = 0;
-                            d[p + 3] = br < 55 ? Math.floor(((br - 18) / 37) * 255) : 255;
+                function processNextFrame() {
+                    // Process a small batch of frames to balance speed and unblocking
+                    for (let batch = 0; batch < 2; batch++) {
+                        if (currentFrameIndex >= frameCount) {
+                            loaded[key] = { frames, fw, fh };
+                            loadedCount++;
+                            if (loadedCount === total) cb();
+
+                            // Process the next sprite on the next event loop tick
+                            currentIndex++;
+                            setTimeout(processNextSprite, 0);
+                            return;
                         }
+
+                        const i = currentFrameIndex;
+                        const fc = document.createElement('canvas');
+                        fc.width = fw;
+                        fc.height = fh;
+                        const fx = fc.getContext('2d');
+                        fx.drawImage(img, -i * fw, 0);
+
+                        const id = fx.getImageData(0, 0, fw, fh);
+                        const d = id.data;
+                        for (let p = 0; p < d.length; p += 4) {
+                            const br = (d[p] + d[p + 1] + d[p + 2]) / 3;
+                            if (br < 18) {
+                                d[p + 3] = 0;
+                            } else {
+                                d[p] = 0;
+                                d[p + 1] = 0;
+                                d[p + 2] = 0;
+                                d[p + 3] = br < 55 ? Math.floor(((br - 18) / 37) * 255) : 255;
+                            }
+                        }
+                        fx.putImageData(id, 0, 0);
+                        frames.push(fc);
+
+                        currentFrameIndex++;
                     }
-                    fx.putImageData(id, 0, 0);
-                    frames.push(fc);
+                    setTimeout(processNextFrame, 0);
                 }
 
-                loaded[key] = { frames, fw, fh };
-                if (++done === total) cb();
+                // Start processing frames for this sprite
+                processNextFrame();
             };
             img.onerror = () => {
                 console.warn(`Failed to load sprite: ${data.src}`);
-                if (++done === total) cb();
+                loadedCount++;
+                if (loadedCount === total) cb();
+
+                currentIndex++;
+                setTimeout(processNextSprite, 0);
             };
             img.src = data.src;
         }
+
+        // Start the queue
+        processNextSprite();
     }
 
     function drawFood() {
