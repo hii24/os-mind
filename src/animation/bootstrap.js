@@ -33,10 +33,9 @@ export function startAnimation(canvasEl) {
     // Load sprites
     const loaded = {};
 
-    function loadAll(cb) {
+    function loadAll(onSpriteLoaded) {
         const entries = Object.entries(SPRITES);
         const total = entries.length;
-        let loadedCount = 0;
         let currentIndex = 0;
 
         function processNextSprite() {
@@ -53,14 +52,11 @@ export function startAnimation(canvasEl) {
                 let currentFrameIndex = 0;
 
                 function processNextFrame() {
-                    // Process a small batch of frames to balance speed and unblocking
                     for (let batch = 0; batch < 2; batch++) {
                         if (currentFrameIndex >= frameCount) {
                             loaded[key] = { frames, fw, fh };
-                            loadedCount++;
-                            if (loadedCount === total) cb();
+                            onSpriteLoaded(); // Alert that THIS sprite is ready
 
-                            // Process the next sprite on the next event loop tick
                             currentIndex++;
                             setTimeout(processNextSprite, 0);
                             return;
@@ -94,21 +90,16 @@ export function startAnimation(canvasEl) {
                     setTimeout(processNextFrame, 0);
                 }
 
-                // Start processing frames for this sprite
                 processNextFrame();
             };
             img.onerror = () => {
                 console.warn(`Failed to load sprite: ${data.src}`);
-                loadedCount++;
-                if (loadedCount === total) cb();
-
                 currentIndex++;
                 setTimeout(processNextSprite, 0);
             };
             img.src = data.src;
         }
 
-        // Start the queue
         processNextSprite();
     }
 
@@ -156,13 +147,13 @@ export function startAnimation(canvasEl) {
         requestAnimationFrame(loop);
     }
 
+    // Start rendering the loop immediately (background & food)
+    loop();
+
+    // Spawn characters incrementally as they finish loading
     loadAll(() => {
-        for (let i = 0; i < 20; i++) {
-            chars.push(new Char(loaded, engine));
-        }
-        for (const c of chars) {
-            c.foodItems = foodItems;
-        }
-        loop();
+        const c = new Char(loaded, engine);
+        c.foodItems = foodItems;
+        chars.push(c);
     });
 }
