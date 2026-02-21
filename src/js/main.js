@@ -44,10 +44,11 @@ async function handleSubmit(e) {
         if (success) {
             input.value = '';
             input.placeholder = 'Дякуємо! Ви у списку ✓';
-            if (btn) {
-                btn.textContent = 'ГОТОВО ✓';
-                btn.style.backgroundColor = '#16a34a';
-            }
+
+            // Hide the submit button and checkbox to make it look clean
+            if (btn) btn.style.display = 'none';
+            const checkboxContainer = e.target.querySelector('.consent-checkbox');
+            if (checkboxContainer) checkboxContainer.style.display = 'none';
         } else {
             throw new Error('Failed to add to database');
         }
