@@ -26,6 +26,17 @@
     line-height: 1.1;
 }
 
+.section-title {
+    font-size: clamp(32px, 5vw, 48px);
+    font-weight: 800;
+    text-align: center;
+    margin: 0 auto 64px auto; // Ensures it's physically centered if it wraps
+    max-width: 800px;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    color: #000;
+}
+
 // ─── Button ───
 .btn {
     display: inline-flex;
