@@ -1,0 +1,44 @@
+// ─── Manifesto Section ───
+.manifesto {
+    background-color: #0a0a0b;
+    color: #fafafa;
+    text-align: center;
+
+    &__text {
+        font-size: clamp(20px, 2.5vw, 32px);
+        line-height: 1.6;
+        max-width: 900px;
+        margin: 0 auto;
+        font-weight: 500;
+        letter-spacing: 0.01em;
+    }
+
+    &__highlight {
+        color: var(--primary);
+    }
+}
+
+// ─── Founder Block ───
+.founder {
+    margin-top: 64px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+
+    &__avatar {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        border: 2px solid var(--primary);
+        object-fit: cover;
+    }
+
+    &__caption {
+        font-size: 14px;
+        color: rgba(255, 255, 255, 0.6);
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        font-weight: 600;
+    }
+}

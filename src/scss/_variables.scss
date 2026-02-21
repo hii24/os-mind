@@ -1,0 +1,20 @@
+// ─── Design Tokens ───
+:root {
+    --background: #f4f4f6;
+    --foreground: #0b0b0b;
+    --primary: #ff4f00;
+    --primary-foreground: #ffffff;
+    --card: #ffffff;
+    --card-foreground: #0b0b0b;
+    --muted: #efeff1;
+    --muted-foreground: #6b6b6b;
+    --border: rgba(0, 0, 0, 0.08);
+    --terminal-bg: #0a0a0b;
+    --terminal-fg: #00ff41;
+    --radius-sm: 4px;
+    --radius-md: 6px;
+    --radius-lg: 8px;
+    --radius-xl: 12px;
+    --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-mono: 'IBM Plex Mono', 'Courier New', monospace;
+}

@@ -1,0 +1,69 @@
+// ─── Hero Section ───
+.hero {
+    min-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    &__title {
+        font-size: clamp(36px, 6vw, 84px);
+        max-width: 1000px;
+        margin-bottom: 24px;
+        color: #000;
+    }
+
+    &__subtitle {
+        font-size: clamp(16px, 2vw, 24px);
+        color: var(--muted-foreground);
+        max-width: 600px;
+        margin-bottom: 64px;
+        font-weight: 500;
+
+        @media (max-width: 768px) {
+            margin-bottom: 40px;
+        }
+    }
+}
+
+// ─── Terminal CTA ───
+.terminal-cta {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+    max-width: 500px;
+}
+
+.terminal-input {
+    display: flex;
+    align-items: center;
+    background-color: var(--terminal-bg);
+    border-radius: var(--radius-sm);
+    padding: 16px 20px;
+    box-shadow: 0 24px 48px rgba(0, 0, 0, 0.1);
+
+    &__prompt {
+        color: var(--terminal-fg);
+        font-family: var(--font-mono);
+        font-weight: bold;
+        margin-right: 16px;
+        font-size: 18px;
+        user-select: none;
+    }
+
+    &__field {
+        flex: 1;
+        background: transparent;
+        border: none;
+        color: #fff;
+        font-family: var(--font-mono);
+        font-size: 16px;
+        outline: none;
+
+        &::placeholder {
+            color: rgba(255, 255, 255, 0.35);
+        }
+    }
+}

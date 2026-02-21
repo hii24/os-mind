@@ -1,0 +1,92 @@
+// ─── Shared Components ───
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 32px;
+
+    @media (max-width: 768px) {
+        padding: 0 20px;
+    }
+}
+
+.section {
+    padding: 160px 0;
+    position: relative;
+
+    @media (max-width: 768px) {
+        padding: 80px 0;
+    }
+}
+
+.mono-title {
+    letter-spacing: -0.02em;
+    font-weight: 800;
+    text-transform: uppercase;
+    line-height: 1.1;
+}
+
+// ─── Button ───
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--primary);
+    color: var(--primary-foreground);
+    font-family: var(--font-body);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 18px 36px;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    border: none;
+    font-size: 16px;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+
+    &:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 6px 20px rgba(255, 79, 0, 0.3);
+    }
+
+    &:active {
+        transform: translateY(0);
+    }
+}
+
+// ─── Fixed NPC Canvas ───
+#npc-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 0;
+    pointer-events: none;
+}
+
+// ─── Isometric Grid Background (transparent, shows canvas) ───
+.grid-bg {
+    position: relative;
+    background-color: transparent;
+    overflow: hidden;
+
+    // Allow clicks to pass through to canvas in these sections
+    #npc-canvas {
+        pointer-events: auto;
+    }
+}
+
+.grid-bg__content {
+    position: relative;
+    z-index: 1;
+    pointer-events: auto;
+}
+
+// ─── Accent divider ───
+.accent-bar {
+    width: 40px;
+    height: 4px;
+    background-color: var(--primary);
+    margin: 16px 0;
+}

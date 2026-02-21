@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ADHD OS — Операційна система для СДУГ мозку</title>
+    <meta name="description"
+        content="Будуємо операційну систему для людей з СДУГ. Body doubling, дофамінове меню, режим фокусу. Приєднуйся до першої хвилі тестувальників." />
+    <meta property="og:title" content="ADHD OS — Твій мозок, наша система" />
+    <meta property="og:description" content="Операційна система для людей, у яких відкрито 50 вкладок в голові." />
+    <meta property="og:type" content="website" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600;700&family=Inter:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet" />
+
+    <script type="module" src="/src/js/main.js"></script>
+</head>
+
+<body>
+
+    <!-- Fixed canvas for NPC animation (behind all sections) -->
+    <canvas id="npc-canvas"></canvas>
+
+    <!-- ═══════════════ HERO ═══════════════ -->
+    <header class="grid-bg">
+        <div class="grid-bg__content section hero">
+            <div class="container">
+                <h1 class="mono-title hero__title">ТВІЙ МОЗОК — ЦЕ ОФІС У ВОГНІ?</h1>
+                <p class="hero__subtitle">
+                    Будуємо операційну систему для людей, у яких відкрито 50 вкладок в голові.
+                </p>
+
+                <form id="hero-form" class="terminal-cta">
+                    <div class="terminal-input">
+                        <span class="terminal-input__prompt">&gt;_</span>
+                        <input type="email" class="terminal-input__field" placeholder="введіть email для доступу..."
+                            required />
+                    </div>
+                    <button type="submit" class="btn">ОТРИМАТИ ДОСТУП</button>
+                </form>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- ═══════════════ PROBLEMS ═══════════════ -->
+        <section class="problems section">
+            <div class="container">
+                <div class="problem">
+                    <div class="problem__image">
+                        <img src="/assets/img/decision-paralysis.png"
+                            alt="Параліч рішень — людина сидить, тримаючи голову в руках" width="600" height="450"
+                            loading="lazy" />
+                    </div>
+                    <div class="problem__text">
+                        <span class="problem__accent">Параліч рішень.</span>
+                        Ти знаєш, що треба робити, але фізично не можеш почати.
+                    </div>
+                </div>
+
+                <div class="problem problem--reverse">
+                    <div class="problem__image">
+                        <img src="/assets/img/goldfish-memory.jpg" alt="Робоча пам'ять — людина біжить з паперами"
+                            width="600" height="450" loading="lazy" />
+                    </div>
+                    <div class="problem__text">
+                        <span class="problem__accent">Пам'ять як у золотої рибки.</span>
+                        Геніальна ідея зникає через 3 секунди. Ти знову забув, навіщо відкрив цю вкладку.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════════ SOLUTIONS ═══════════════ -->
+        <section class="grid-bg">
+            <div class="grid-bg__content section">
+                <div class="container">
+                    <h2 class="mono-title" style="font-size: clamp(28px, 4vw, 48px); text-align: center; color: #000;">
+                        ВІД ХАОСУ ДО ПОРЯДКУ
+                    </h2>
+
+                    <div class="bento-grid">
+                        <div class="bento-card">
+                            <div class="bento-card__icon">👥</div>
+                            <div>
+                                <div class="bento-card__title">Тіло-двійник<br />(Body Doubling)</div>
+                                <div class="accent-bar"></div>
+                                <div class="bento-card__desc">
+                                    Працюй не наодинці. Віртуальна присутність інших допомагає тримати фокус.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bento-card">
+                            <div class="bento-card__icon">🎮</div>
+                            <div>
+                                <div class="bento-card__title">Дофамінове<br />меню</div>
+                                <div class="accent-bar"></div>
+                                <div class="bento-card__desc">
+                                    Гейміфікація нудних задач. Отримуй швидку винагороду за кожну закриту справу.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bento-card">
+                            <div class="bento-card__icon">⚡</div>
+                            <div>
+                                <div class="bento-card__title">Режим<br />Фокусу</div>
+                                <div class="accent-bar"></div>
+                                <div class="bento-card__desc">
+                                    Блокування всього зайвого однією кнопкою. Тільки ти і найважливіша задача.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════════ MANIFESTO ═══════════════ -->
+        <section class="manifesto section">
+            <div class="container">
+                <blockquote class="manifesto__text">
+                    "Ми не робимо ще один календар. Календарі не працюють, коли ти не
+                    відчуваєш часу. Ми робимо інструмент, який враховує
+                    <span class="manifesto__highlight">твою нейробіологію</span>. Без
+                    почуття провини за невиконані задачі."
+                </blockquote>
+
+                <div class="founder">
+                    <img src="https://storage.googleapis.com/banani-avatars/avatar%2Fmale%2F25-35%2FEuropean%2F3"
+                        alt="Засновник" class="founder__avatar" width="80" height="80" loading="lazy" />
+                    <div class="founder__caption">Від засновника з СДУГ для своїх</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════════ WAITLIST ═══════════════ -->
+        <section class="grid-bg">
+            <div class="grid-bg__content section waitlist">
+                <div class="container">
+                    <h2 class="mono-title" style="font-size: clamp(28px, 3.5vw, 40px); color: #000;">
+                        ЗАЛ ОЧІКУВАННЯ
+                    </h2>
+
+                    <div class="counter">
+                        <div class="counter__digit"><span>0</span></div>
+                        <div class="counter__digit"><span>0</span></div>
+                        <div class="counter__digit"><span>0</span></div>
+                        <div class="counter__digit"><span>0</span></div>
+                    </div>
+
+                    <div class="waitlist__subtitle">людини вже чекають релізу.</div>
+
+                    <div class="waitlist__cta-text">
+                        Не стій осторонь. Залітай у першу хвилю тестувальників.
+                    </div>
+
+                    <form id="waitlist-form" class="terminal-cta" style="margin: 0 auto;">
+                        <div class="terminal-input">
+                            <span class="terminal-input__prompt">&gt;_</span>
+                            <input type="email" class="terminal-input__field" placeholder="твій email..." required />
+                        </div>
+                        <button type="submit" class="btn" style="padding: 24px 64px; font-size: 18px;">
+                            ПРИЄДНАТИСЯ
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+</body>
+
+</html>

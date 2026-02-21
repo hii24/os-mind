@@ -1,0 +1,70 @@
+// ─── Waitlist Section ───
+.waitlist {
+    text-align: center;
+
+    &__subtitle {
+        font-size: 20px;
+        color: var(--muted-foreground);
+        margin-bottom: 40px;
+        font-weight: 500;
+    }
+
+    &__cta-text {
+        margin-bottom: 40px;
+        font-size: clamp(18px, 2vw, 24px);
+        font-weight: 600;
+        color: #000;
+    }
+}
+
+// ─── Airport Counter ───
+.counter {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin: 48px 0;
+
+    @media (max-width: 480px) {
+        gap: 8px;
+    }
+
+    &__digit {
+        background-color: #0a0a0b;
+        color: #fff;
+        width: 72px;
+        height: 96px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 56px;
+        font-weight: 800;
+        font-family: var(--font-body);
+        border-radius: var(--radius-sm);
+        position: relative;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+
+        @media (max-width: 480px) {
+            width: 52px;
+            height: 72px;
+            font-size: 40px;
+        }
+
+        // Split-flap divider line
+        &::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background-color: rgba(0, 0, 0, 0.8);
+            transform: translateY(-50%);
+            z-index: 2;
+        }
+
+        span {
+            position: relative;
+            z-index: 1;
+        }
+    }
+}
