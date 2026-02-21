@@ -11,6 +11,14 @@ export function startAnimation(canvasEl) {
     const engine = createEngine(canvasEl);
     const { ctx, drawFloor, worldToScreen, screenToWorld, getW, getH } = engine;
 
+    // --- INSTANT PLACEHOLDER RENDER ---
+    // Draw the floor grid immediately so the user doesn't see an empty screen
+    // while waiting several seconds for the character sprites to load.
+    const W = getW();
+    const H = getH();
+    ctx.clearRect(0, 0, W, H);
+    drawFloor();
+
     const foodItems = [];
 
     // Click to place food
