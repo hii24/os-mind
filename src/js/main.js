@@ -17,24 +17,49 @@ if (npcCanvas) {
 const form = document.getElementById('waitlist-form');
 const heroForm = document.getElementById('hero-form');
 
-function handleSubmit(e) {
+let isFirebaseLoading = false;
+
+async function handleSubmit(e) {
     e.preventDefault();
     const input = e.target.querySelector('input[type="email"]');
     const email = input.value.trim();
+    const btn = e.target.querySelector('.btn');
 
     if (!email) return;
 
-    // TODO: connect to backend API
-    console.log('Email submitted:', email);
-
-    input.value = '';
-    input.placeholder = 'Дякуємо! Ми зв\'яжемось ✓';
+    // Optional UI Feedback - indicate that we are processing
+    if (btn) {
+        btn.textContent = 'ОБРОБКА...';
+        btn.disabled = true;
+    }
     input.disabled = true;
 
-    const btn = e.target.querySelector('.btn');
-    if (btn) {
-        btn.textContent = 'ГОТОВО ✓';
-        btn.style.backgroundColor = '#16a34a';
+    try {
+        isFirebaseLoading = true;
+        // Dynamically import Firebase only when the user submits
+        // This keeps the initial page load bundle extremely small!
+        const { addEmailToWaitlist } = await import('./firebaseInit.js');
+        const success = await addEmailToWaitlist(email);
+
+        if (success) {
+            input.value = '';
+            input.placeholder = 'Дякуємо! Ви у списку ✓';
+            if (btn) {
+                btn.textContent = 'ГОТОВО ✓';
+                btn.style.backgroundColor = '#16a34a';
+            }
+        } else {
+            throw new Error('Failed to add to database');
+        }
+    } catch (err) {
+        console.error('Submission error:', err);
+        input.disabled = false;
+        if (btn) {
+            btn.textContent = 'ПОМИЛКА. СПРОБУВАТИ ЩЕ';
+            btn.disabled = false;
+        }
+    } finally {
+        isFirebaseLoading = false;
     }
 }
 
