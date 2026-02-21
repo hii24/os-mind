@@ -67,3 +67,66 @@
         }
     }
 }
+
+.consent-checkbox {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    text-align: left;
+    margin-top: 4px;
+    margin-bottom: 8px;
+
+    input[type="checkbox"] {
+        appearance: none;
+        background-color: var(--card-bg);
+        margin: 4px 0 0 0;
+        font: inherit;
+        color: currentColor;
+        width: 18px;
+        height: 18px;
+        border: 2px solid #cbd5e1;
+        border-radius: 4px;
+        display: grid;
+        place-content: center;
+        cursor: pointer;
+        flex-shrink: 0;
+        transition: all 0.2s ease;
+
+        &::before {
+            content: "";
+            width: 10px;
+            height: 10px;
+            transform: scale(0);
+            transition: 120ms transform ease-in-out;
+            box-shadow: inset 1em 1em var(--primary);
+            clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+        }
+
+        &:checked {
+            border-color: var(--primary);
+        }
+
+        &:checked::before {
+            transform: scale(1);
+        }
+    }
+
+    label {
+        color: #475569;
+        font-size: 13px;
+        line-height: 1.5;
+        font-family: var(--font-body);
+        cursor: pointer;
+        flex: 1;
+
+        a {
+            color: var(--primary);
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            color: #94a3b8;
+        }
+    }
+}
