@@ -120,9 +120,13 @@
         flex: 1;
 
         a {
-            color: var(--primary);
+            color: #c43d00; // Darker orange for WCAG AA 4.5:1 contrast on white
             text-decoration: underline;
             text-underline-offset: 3px;
+
+            &:hover {
+                color: var(--primary);
+            }
         }
 
         @media (prefers-color-scheme: dark) {
