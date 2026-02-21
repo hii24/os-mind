@@ -110,12 +110,6 @@
     position: relative;
     z-index: 10;
 
-    @media (prefers-color-scheme: dark) {
-        background-color: #111;
-        border-top: 1px solid #222;
-        color: #888;
-    }
-
     &__container {
         display: flex;
         flex-direction: column;
@@ -132,10 +126,6 @@
         font-family: var(--font-body);
         color: #64748b;
         font-size: 14px;
-
-        @media (prefers-color-scheme: dark) {
-            color: #666;
-        }
     }
 
     &__links {
@@ -153,14 +143,6 @@
 
             &:hover {
                 color: var(--primary);
-            }
-
-            @media (prefers-color-scheme: dark) {
-                color: #666;
-
-                &:hover {
-                    color: var(--primary);
-                }
             }
         }
     }
